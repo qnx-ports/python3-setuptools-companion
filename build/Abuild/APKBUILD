@@ -2,7 +2,7 @@
 # Alpine-Maintainer: Achill Gilgenast <achill@achill.org>
 pkgname=python3-setuptools
 pkgver=80.8.0
-pkgrel=1
+pkgrel=${pkgrel:-0}
 pkgdesc="Collection of enhancements to the Python3 distutils"
 options="!check" # Tests require packages out of main/
 url="https://pypi.org/project/setuptools"
@@ -27,6 +27,7 @@ package() {
     # remove *.exe
     find "$pkgdir" -name \*.exe -delete
 }
+options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 8aea57f04a14617048553287fe782ec70e5c332f9ec01a21134ba6eb5b0ee052ef97f106f4e192980d3d051bf4bd517f358083bce3ec8b9b53d1169fa4bb708a  python3-setuptools-80.8.0.tar.gz
 "
